@@ -7,12 +7,11 @@ import io.micronaut.http.annotation.QueryValue
 import javax.inject.Inject
 
 @Controller("/")
-class BookController (@Inject val bookRepository: BookRepository){
+class BookController (@Inject val bookRepository: BookRepository,@Inject val searchRepository: SearchRepository){
 
     @Post("/add")
-    fun addNewBook():String{
-        var book = Book(0,"The Stand", 1000)
-            bookRepository.save(book)
+    fun addNewBook(book: Book):String{
+        bookRepository.save(book)
         return "Saved"
     }
 
@@ -23,8 +22,8 @@ class BookController (@Inject val bookRepository: BookRepository){
     fun findListById(@QueryValue id: Long)=bookRepository.findById(id)
 
     @Post("/update")
-    fun updateBook(@QueryValue id: Long,title:String,pages:Int):String{
-        bookRepository.save(Book(id, title,pages))
+    fun updateBook(@QueryValue id: Long,title:String,author:String,attribute:String):String{
+        bookRepository.save(Book(id, title, author,attribute))
         return "Updated"
     }
 
@@ -36,5 +35,11 @@ class BookController (@Inject val bookRepository: BookRepository){
         }else
             return "No Book"
     }
+
+    @Get("/find_author")
+    fun findListByAuthor(@QueryValue author: String)=searchRepository.findByAuthor(author)
+
+    @Get("/find_title")
+    fun findListByBookName(@QueryValue title: String)=searchRepository.findByTitle(title)
 
 }

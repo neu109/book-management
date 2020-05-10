@@ -10,6 +10,5 @@ data class Book(@Id
                 @GeneratedValue
                 var id: Long,
                 var title: String,
-                var pages: Int = 0)
-@Inject
-lateinit var bookRepository: BookRepository
+                var author: String,
+                var attribute:String)
