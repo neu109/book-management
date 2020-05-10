@@ -7,7 +7,4 @@ import io.micronaut.data.model.query.builder.sql.Dialect
 import io.micronaut.data.repository.CrudRepository
 
 @JdbcRepository(dialect = Dialect.H2)
-interface BookRepository : CrudRepository<Book, Long> {
-    fun find(title: String): Book
-
-}
+interface BookRepository : CrudRepository<Book, Long>
