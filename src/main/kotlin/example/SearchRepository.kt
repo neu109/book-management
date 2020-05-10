@@ -1,10 +1,10 @@
 package example
 
 import io.micronaut.data.repository.CrudRepository
-import io.micronaut.data.annotation.Repository
-import io.micronaut.data.annotation.Query
+import io.micronaut.data.jdbc.annotation.JdbcRepository
+import io.micronaut.data.model.query.builder.sql.Dialect
 
-@Repository
+@JdbcRepository(dialect = Dialect.H2)
 interface SearchRepository : CrudRepository<Book, Int>{
     fun findByAuthor(author:String):Iterable<Book>?
     fun findByTitle(title:String):Iterable<Book>?
