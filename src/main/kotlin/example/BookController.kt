@@ -10,8 +10,8 @@ import javax.inject.Inject
 class BookController (@Inject val bookRepository: BookRepository,@Inject val searchRepository: SearchRepository){
 
     @Post("/add")
-    fun addNewBook(book: Book):String{
-        bookRepository.save(book)
+    fun addNewBook(title: String,author: String,attribute: String):String{
+        bookRepository.save(Book(0,title,author,attribute))
         return "Saved"
     }
 
@@ -40,6 +40,6 @@ class BookController (@Inject val bookRepository: BookRepository,@Inject val sea
     fun findListByAuthor(@QueryValue author: String)=searchRepository.findByAuthor(author)
 
     @Get("/find_title")
-    fun findListByBookName(@QueryValue title: String)=searchRepository.findByTitle(title)
+    fun findListByTitle(@QueryValue title: String)=searchRepository.findByTitle(title)
 
 }
