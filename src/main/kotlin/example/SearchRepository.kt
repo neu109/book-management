@@ -6,6 +6,6 @@ import io.micronaut.data.model.query.builder.sql.Dialect
 
 @JdbcRepository(dialect = Dialect.H2)
 interface SearchRepository : CrudRepository<Book, Int>{
-    fun findByAuthor(author:String):Iterable<Book>?
-    fun findByTitle(title:String):Iterable<Book>?
+    fun findByAuthor(author:String) : Iterable<Book>?
+    fun findByTitle(title:String) : Iterable<Book>?
 }
