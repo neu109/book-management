@@ -9,7 +9,6 @@ import io.micronaut.http.client.RxHttpClient
 import io.micronaut.test.annotation.MicronautTest
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.AbstractAnnotationSpec
-import org.junit.jupiter.api.BeforeEach
 
 @MicronautTest
 class BookControllerTest(ctx: ApplicationContext): StringSpec({
